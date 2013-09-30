@@ -178,27 +178,18 @@ var scripts = document.getElementsByTagName('script'),
         if (typeof(keys) == 'undefined') {
             return false;
         }
-        if (typeof(selector) == 'undefined') {
-            selector = keyMap.selector;
-        }
-        if (typeof(css) == 'undefined') {
-            css = {};
-        }
+        
+        selector = selector || keyMap.selector;
+        css = css || {};
         
         if (typeof(css.class) == 'undefined') {
             setClass = false;
-            if (typeof(css.background) == 'undefined') {
-                css.background = "red";
-            }
-            if (typeof(css.color) == 'undefined') {
-                css.color = "black";
-            }
+            css.background = css.background || "red";
+            css.color = css.color || "black";
         } else {
             setClass = true;
         }
-        if (typeof(special) == 'undefined') {
-            special = "";
-        }
+        special = special || "";
         
         var style = function(sel) {
             if (setClass) {
@@ -211,7 +202,6 @@ var scripts = document.getElementsByTagName('script'),
         var reset = function() {
             //Reset Keymap
             if (typeof(keyMap.css) == 'undefined') {
-                console.log('undef');
                 if (setClass) {
                     $(selector+" .keymap-key").removeClass(css.class);
                 }
