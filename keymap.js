@@ -18,9 +18,7 @@ var scripts = document.getElementsByTagName('script'),
     };
     
     $.fn.keymap = function(opt) {
-        if (typeof(opt) == 'undefined') {
-            opt = {};
-        }
+        opt = opt || {};
         if (opt.type == "reset") {
             this.styleKeymap(opt.css);
         } else {
@@ -63,13 +61,10 @@ var scripts = document.getElementsByTagName('script'),
     $.fn.createKeymap = function(opt) {
         var _this = this;
         //Check options
-        if (typeof(opt) == 'undefined') {
-            opt = {};
-        }
+        opt = opt || {};
         //Load layout
-        if (typeof(opt.layout) == 'undefined') {
-            opt.layout = "qwerty";
-        }
+        opt.layout = opt.layout || "qwerty";
+        
         $.getJSON(curpath+"layouts/"+opt.layout+".json", function(json){
             //Delete old content
             $(_this).html("");
