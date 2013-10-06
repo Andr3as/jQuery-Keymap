@@ -3,6 +3,8 @@
  * as-is and without warranty under the MIT License.
  * See http://opensource.org/licenses/MIT for more information. 
  * This information must remain intact.
+ * Author: Andr3as <andranode@gmail.com>
+ * Date:   06/10/2013
  */
  
 var scripts = document.getElementsByTagName('script'),
@@ -17,6 +19,26 @@ var scripts = document.getElementsByTagName('script'),
         selector: ""
     };
     
+    //////////////////////////////////////////////////////////
+    //
+    //  Create your keymap
+    //
+    //  Parameters
+    //
+    //  options - (optional) - {Object}
+    //              type - (String) - "reset" to reset or recolor your keymap else create a keymap
+    //              key - {Object} - Attributes of the keys
+    //                  color - Color of the letters
+    //                  background - Background color of the keys
+    //                  class - You can also add a class to every key, and style them with a stylesheet
+    //              layout - (String) - Name of the layout file in the layouts directory
+    //                  Default - "qwerty"
+    //
+    //  Result
+    //
+    //  obj - {Object} - Dom object
+    //
+    //////////////////////////////////////////////////////////
     $.fn.keymap = function(opt) {
         opt = opt || {};
         if (opt.type == "reset") {
@@ -27,6 +49,23 @@ var scripts = document.getElementsByTagName('script'),
         return this;
     };
     
+    //////////////////////////////////////////////////////////
+    //
+    //  Style keymap
+    //
+    //  Parameters
+    //              
+    //  css - (optional) - {Object} - coloring attributes
+    //          key - {Object} - Attributes of the keys
+    //              color - Color of the letters
+    //              background - Background color of the keys
+    //              class - You can also add a class to every key, and style them with a stylesheet
+    //
+    //  Result
+    //
+    //  obj - {Object} - Dom object
+    //
+    //////////////////////////////////////////////////////////
     $.fn.styleKeymap = function(css) {
         //Style keyboard
         if (typeof(css) != 'undefined') {
@@ -49,6 +88,15 @@ var scripts = document.getElementsByTagName('script'),
         return this;
     };
     
+    //////////////////////////////////////////////////////////
+    //
+    //  Delete keymap
+    //
+    //  Result
+    //
+    //  obj - {Object} - Dom object
+    //
+    //////////////////////////////////////////////////////////
     $.fn.deleteKeymap = function() {
         this.html("");
         return this;
@@ -57,7 +105,25 @@ var scripts = document.getElementsByTagName('script'),
     /*
         opt = {layout: qwerty, css: {key: {background: #123456 || white || rgb(120,120,120), color: ebenso}}}
     */
-    
+    //////////////////////////////////////////////////////////
+    //
+    //  Create your keymap
+    //
+    //  Parameters
+    //
+    //  options - (optional) - {Object}
+    //              key - {Object} - Attributes of the keys
+    //                  color - Color of the letters
+    //                  background - Background color of the keys
+    //                  class - You can also add a class to every key, and style them with a stylesheet
+    //              layout - (String) - Name of the layout file in the layouts directory
+    //                  Default - "qwerty"
+    //
+    //  Result
+    //
+    //  obj - {Object} - Dom object
+    //
+    //////////////////////////////////////////////////////////
     $.fn.createKeymap = function(opt) {
         var _this = this;
         //Check options
@@ -159,14 +225,45 @@ var scripts = document.getElementsByTagName('script'),
         return this;
     };
     
+    //////////////////////////////////////////////////////////
+    //
+    //  Returns the selector of the last keymap
+    //
+    //  Result
+    //
+    //  obj - {String} - Selector of the last keymap
+    //
+    //////////////////////////////////////////////////////////
     $.fn.getKeymap = function() {
         return keyMap.selector;
     };
+    
     
     /* selector : Selector of the keymap, keys: Array of key to link together or just one key f.e. [88,89,90],
         css: {background-color or class to add}
         special: Special selector, f.e. :last or :first
         element function called by: element wich to click or hover to show shortcut */
+    //////////////////////////////////////////////////////////
+    //
+    //  Create a shortcut
+    //
+    //  Parameters
+    //
+    //  selector - (Required) - {String} - Selector of the keymap
+    //  keys - (Required) - {Array} - Array of keys for the keybinding
+    //          Format: Number - keyCode of the key f.e. [88,89,90] or String - Value of the key given in the layout f.e. ["ctrl","alt","f"]
+    //  css - (optional) - {Object} - Attributes to style the active keys
+    //                  Either
+    //                      class - {String} - Class to add every active key, usable to style the keybinging with a stylesheet
+    //                      color - {String}/{Number} - Font color
+    //                      background - {String}/{Number} - Background color
+    //  special - (optional) - {String} - Special selector, f.e. :last or :first
+    //
+    //  Result
+    //
+    //  obj - {Object} - Dom object
+    //
+    //////////////////////////////////////////////////////////
     $.fn.createShortcut = function(selector, keys, css, special) {
         var _this = this;
         var setClass;
