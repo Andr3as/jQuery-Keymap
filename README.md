@@ -13,6 +13,6 @@ Create your own keymap to display the keybinings of your software with jQuery.
 
 ##Examples
 
-####[Live preview](http://andrano.de/Plugins/#keymap)
+####[Live preview](http://andr3as.github.io/jQuery-Keymap)
 
 ![Example](http://andrano.de/Plugins/img/keymap.jpg "Example")
