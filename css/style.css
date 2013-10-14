@@ -1,0 +1,20 @@
+body {
+	background-color: rgb(0,34,64);
+	color: white;
+}
+.head {
+	margin: 80px 0;
+	text-align: center;
+}
+.head h1 {
+	font-size: 100px;
+	line-height: 1;
+}
+.container > hr {
+	margin: 30px 0;
+	opacity: 0.1;
+}
+.link {
+	color: white;
+	text-decoration: underline;
+}

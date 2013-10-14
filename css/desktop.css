@@ -1,0 +1,19 @@
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	body {
+		padding-bottom: 60px;
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {}
