@@ -108,7 +108,6 @@
                             $('.keymap').keymap({"css": {"key": {"background": "white", "color": "black"}}});
                         }
                         //Create shortcuts
-                        $('.keymap').keymap({"css": {"key": {"background": "white", "color": "black"}}});
                         $('.command_refresh').createShortcut('.keymap', ["f5"], {},":first");
                         $('.command_save').createShortcut('.keymap', ["ctrl", "s"], {}, ":first");
                         $('.command_bookmark').createShortcut('.keymap', [17, 68], {}, ":first");
@@ -117,6 +116,7 @@
                     $('#keymapWin').addClass('disabled');
                     //Switch toggle
                     var fn = function() {
+                        console.log(this);
                         $('.keyToggle').removeClass('disabled');
                         $(this).addClass('disabled');
                         
