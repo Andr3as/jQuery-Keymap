@@ -37,8 +37,8 @@
                         <a class="brand" id="brand" href="http://andr3as.github.io/jQuery-Keymap">Andrano - Keymap</a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
-                                <li><a href="http://andrano.de">Home</a></li>
-                                <li><a href="http://andrano.de/Plugins">Codiad-Plugins</a></li>
+                                <li><a href="http://andrano.de">Andrano.de</a></li>
+                                <li><a href="http://andrano.de/Plugins">Codiad Plugins</a></li>
                                 <li><a href="https://github.com/Andr3as">Andr3as on GitHub</a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -51,7 +51,7 @@
 			<div class="head">
 				<h1 class="hidden-phone">Keymap - Preview</h1>
 				<h2 class="visible-phone">Keymap - Preview</h2>
-				<p class="lead"></p>
+				<p class="lead">Create with jQuery a keymap to display key bindings</p>
 				<a href="https://nodeload.github.com/Andr3as/jQuery-Keymap/zip/master" class="btn btn-large btn-success" style="width: 100px;"><i class="icon-download icon-white"></i> Download</a>
 				<a href="https://github.com/Andr3as/jQuery-Keymap" class="btn btn-large btn-success" style="width: 100px;">
 					<i><img src="img/GitHub-Mark-32px.png" alt="GitHub-Mark" style="width: 14px;"></i> GitHub</a>
@@ -60,12 +60,21 @@
 			<hr>
 			
 			<div class="span12">
+			    <div class="btn-group" style="padding-top: 10px; padding-bottom: 10px;">
+                    <button class="btn keyToggle" id="keymapWin">Windows/Linux</button>
+                    <button class="btn keyToggle" id="keymapMac">Mac</button>
+                </div>
 				<div class="keymap span12"></div>
 				<div class="span4">
 				    <h3>Example Commands</h3>
+				    <p><span class="icon-info-sign icon-white"></span> Hover or click on the commands to display the key binding.</p>
 				    <a class="command_refresh link">Refresh browser</a>
 				    <a class="command_save link">Save website</a>
 				    <a class="command_bookmark link">Set bookmark</a>
+				    <h3>More details of the API</h3>
+				    <a href="https://github.com/andr3as/jQuery-Keymap/wiki" class="link">GitHub Wiki</a>
+				    <h3>Create your own layout</h3>
+				    <a href="https://github.com/Andr3as/jQuery-Keymap/wiki/Layout" class="link">More details</a>
 				</div>
 				<div class="span7">
 				    <h3>Example Code</h3>
@@ -82,10 +91,34 @@
 			<script src="keymap.min.js"></script>
             <script>
                 $(document).ready(function(){
-                    $('.keymap').keymap({"css": {"key": {"background": "white", "color": "black"}}});
-                    $('.command_refresh').createShortcut('.keymap', ["f5"], {},":first");
-                    $('.command_save').createShortcut('.keymap', ["ctrl", "s"], {}, ":first");
-                    $('.command_bookmark').createShortcut('.keymap', [17, 68], {}, ":first");
+                    var keymap = function(key) {
+                        //Create Keymap
+                        if (key == "command") {
+                            $('.keymap').keymap({"layout": "mac_querty","css": {"key": {"background": "white", "color": "black"}}});
+                        } else {
+                            $('.keymap').keymap({"css": {"key": {"background": "white", "color": "black"}}});
+                        }
+                        //Create shortcuts
+                        $('.keymap').keymap({"css": {"key": {"background": "white", "color": "black"}}});
+                        $('.command_refresh').createShortcut('.keymap', ["f5"], {},":first");
+                        $('.command_save').createShortcut('.keymap', ["ctrl", "s"], {}, ":first");
+                        $('.command_bookmark').createShortcut('.keymap', [17, 68], {}, ":first");
+                    }
+                    keymap("ctrl");
+                    $('#keymapWin').addClass('disabled');
+                    //Switch toggle
+                    var fn = function() {
+                        $('.keyToggle').removeClass('disabled');
+                        $(this).addClass('disabled');
+                        
+                        if ($(this).attr("id") == "keymapWin") {
+                            keymap("ctrl");
+                        } else {
+                            keymap("command");
+                        }
+                    };
+                    $('#keymapWin').click(fn);
+                    $('#keymapMac').click(fn);
                 });
             </script>
             <style>
@@ -99,7 +132,7 @@
                     <div class="container">
                         <ul class="nav">
                             <li><a>© 2013 Andr3as</a></li>
-                            <li><a href="andrano.de/impressum.html">Impressum</a></li>
+                            <li><a href="http://andrano.de/impressum.html">Impressum</a></li>
                             <li><a href="http://twitter.github.io/bootstrap">Responsive Theme by Bootstrap</a></li>
                             <li><a href="http://glyphicons.com/">Icons by Glyphicons</a></li>
                         </ul>
