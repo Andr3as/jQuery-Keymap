@@ -1,12 +1,12 @@
 {
 	"name": "keymap",
 	"title": "jQuery Keymap",
-	"description": "jQuery plugin for displaying shortcuts.",
+	"description": "Create with jQuery a keymap to display keybindings.",
 	"keywords": [
 		"ui",
 		"animation"
 	],
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": {
 		"name": "Andr3as",
 		"email": "andranode@gmail.com",

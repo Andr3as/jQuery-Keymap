@@ -16,3 +16,6 @@ Create your own keymap to display the keybinings of your software with jQuery.
 ####[Live preview](http://andr3as.github.io/jQuery-Keymap)
 
 ![Example](http://andrano.de/Plugins/img/keymap.jpg "Example")
+
+##Contribute
+You want to contribute a new layout or some fixes create a pull request or send an email to [andranode[at]gmail.com](mailto://andranode@gmail.com)

@@ -221,6 +221,9 @@ var scripts = document.getElementsByTagName('script'),
             //Save selector and style
             keyMap.selector = this.selector;
             keyMap.css      = opt.css;
+        })
+        .fail(function(e){
+            $(_this).html('<p class="keymap-error">Failed to load layout! Check <a href="https://github.com/Andr3as/jQuery-Keymap/wiki/Troubleshooting">error #1</a> for more details.</p>');
         });
         return this;
     };
@@ -271,8 +274,8 @@ var scripts = document.getElementsByTagName('script'),
             return false;
         }
         
-        selector = selector || keyMap.selector;
-        css = css || {};
+        selector    = selector || keyMap.selector;
+        css         = css || {};
         
         if (typeof(css.class) == 'undefined') {
             setClass = false;
