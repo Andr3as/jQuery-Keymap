@@ -1,10 +1,15 @@
+/**
+ *  @author Andr3as <andranode@gmail.com>
+ *  @license https://github.com/Andr3as/jQuery-Keymap/blob/master/LICENSE.md MIT
+ *  @version 2.0.0
+ *  @date 15/08/2015
+ */
+
 /*
  * Copyright (c) Andr3as
  * as-is and without warranty under the MIT License.
  * See http://opensource.org/licenses/MIT for more information. 
  * This information must remain intact.
- * Author: Andr3as <andranode@gmail.com>
- * Date:   06/10/2013
  */
  
 var scripts = document.getElementsByTagName('script'),
@@ -12,240 +17,192 @@ var scripts = document.getElementsByTagName('script'),
     curpath = path.split('/').slice(0, -1).join('/')+'/';
 
 (function ( $ ) {
-    keyMap = {
+    
+    var keyMap = {
         css: {
             key: {}
         },
         selector: ""
     };
     
-    //////////////////////////////////////////////////////////
-    //
-    //  Create your keymap
-    //
-    //  Parameters
-    //
-    //  options - (optional) - {Object}
-    //              type - (String) - "reset" to reset or recolor your keymap else create a keymap
-    //              key - {Object} - Attributes of the keys
-    //                  color - Color of the letters
-    //                  background - Background color of the keys
-    //                  class - You can also add a class to every key, and style them with a stylesheet
-    //              layout - (String) - Name of the layout file in the layouts directory
-    //                  Default - "qwerty"
-    //
-    //  Result
-    //
-    //  obj - {Object} - Dom object
-    //
-    //////////////////////////////////////////////////////////
-    $.fn.keymap = function(opt) {
-        opt = opt || {};
-        if (opt.type == "reset") {
-            this.styleKeymap(opt.css);
-        } else {
-            this.createKeymap(opt);
-        }
-        return this;
-    };
-    
-    //////////////////////////////////////////////////////////
-    //
-    //  Style keymap
-    //
-    //  Parameters
-    //              
-    //  css - (optional) - {Object} - coloring attributes
-    //          key - {Object} - Attributes of the keys
-    //              color - Color of the letters
-    //              background - Background color of the keys
-    //              class - You can also add a class to every key, and style them with a stylesheet
-    //
-    //  Result
-    //
-    //  obj - {Object} - Dom object
-    //
-    //////////////////////////////////////////////////////////
-    $.fn.styleKeymap = function(css) {
-        //Style keyboard
-        if (typeof(css) != 'undefined') {
-            if (typeof(css.key) != 'undefined') {
-                if (typeof(css.key.color) != 'undefined') {
-                    $(this.selector+' .keymap-key').css("color", css.key.color);
-                } else {
-                    $(this.selector+' .keymap-key').css("color", "");
+    /**
+     *  @name $().keymap
+     *  @this {HTML div} - Div element to create keymap in
+     *  @param {Object{}} [options] - All options as an object
+     *  @param {(Object{}|string)} [options.layout=qwerty] - Either parsed json data of the layout or name of layout
+     *  @param {Object{}} [options.css] - Style you want to apply with js to the keys
+     *  @param {Object{}} [options.css.key] - CSS styles for the keys
+     *  @param {string} [options.css.key.color] - Text color of keys
+     *  @param {string} [options.css.key.background] - Background color of keys
+     *  @param {string} [options.css.key.class] - Aditional classes you want to add to the keys
+     */
+    $.fn.keymap = function(options) {
+        options = options || {};
+        var _this = this;
+        
+        var create, error, parse, style, createElement;
+        
+        create = function() {
+            options.layout = options.layout || "qwerty";
+            if (typeof(options.layout) == 'object') {
+                parse();
+            } else if (typeof(options.layout) == 'string') {
+                $.getJSON(curpath+"layouts/"+options.layout+".json", function(json){
+                    options.layout = json;
+                    parse();
+                }).fail(function(e){
+                    error('Failed to load layout! Check <a href="https://github.com/Andr3as/jQuery-Keymap/wiki/Troubleshooting">error #1</a> for more details.');
+                });
+            } else {
+                error("Unknown layout type");
+            }
+        };
+        
+        error = function(message){
+            $(_this).html('<p class="keymap-error">' + message +'</p>');
+        };
+
+        createElement = function(value) {
+            p = document.createElement("p");
+            if (typeof(value) == 'string') {
+                $(p).text(value);
+            } else if (typeof(value) == 'object') {
+                if (typeof(value.name) != 'undefined') {
+                    $(p).text(value.name);
                 }
-                if (typeof(css.key.background) != 'undefined') {
-                    $(this.selector+' .keymap-key').css("background-color", css.key.background);
-                } else {
-                    $(this.selector+' .keymap-key').css("background-color", "");
-                }
-                if (typeof(css.key.class) != 'undefined') {
-                    $(this.selector+' .keymap-key').addClass(css.key.class);
+                if (typeof(value.class) != 'undefined') {
+                    $(p).addClass(value.class);
                 }
             }
-        }
-        return this;
-    };
-    
-    //////////////////////////////////////////////////////////
-    //
-    //  Delete keymap
-    //
-    //  Result
-    //
-    //  obj - {Object} - Dom object
-    //
-    //////////////////////////////////////////////////////////
-    $.fn.deleteKeymap = function() {
-        this.html("");
-        return this;
-    };
-    
-    /*
-        opt = {layout: qwerty, css: {key: {background: #123456 || white || rgb(120,120,120), color: ebenso}}}
-    */
-    //////////////////////////////////////////////////////////
-    //
-    //  Create your keymap
-    //
-    //  Parameters
-    //
-    //  options - (optional) - {Object}
-    //              key - {Object} - Attributes of the keys
-    //                  color - Color of the letters
-    //                  background - Background color of the keys
-    //                  class - You can also add a class to every key, and style them with a stylesheet
-    //              layout - (String) - Name of the layout file in the layouts directory
-    //                  Default - "qwerty"
-    //
-    //  Result
-    //
-    //  obj - {Object} - Dom object
-    //
-    //////////////////////////////////////////////////////////
-    $.fn.createKeymap = function(opt) {
-        var _this = this;
-        //Check options
-        opt = opt || {};
-        //Load layout
-        opt.layout = opt.layout || "qwerty";
+            return p;
+        };
         
-        $.getJSON(curpath+"layouts/"+opt.layout+".json", function(json){
+        parse = function(){
             //Delete old content
             $(_this).html("");
-            var keyWidth = _this.width() / json.line;
-            var keys = json.keys;
-            var key, width, height, offset, span, p, value;
-            var div = document.createElement("div");
-            $(div).addClass("line");
-            for(var i = 0; i < keys.length; i++) {
-                key = keys[i];
-                span = document.createElement("span");
-                if (typeof(key.width) == 'undefined') {
-                    $(span).css("width", keyWidth -2+"px");
-                } else {
-                    $(span).css("width", (keyWidth * key.width)-2+"px");
-                }
-                if (typeof(key.height) == 'undefined') {
-                    $(span).css("height", keyWidth -2+"px");
-                } else {
-                    $(span).css("height", (keyWidth * key.height)+"px");
-                }
-                if (typeof(key.offset) == 'undefined') {
-                    $(span).css("margin-left", 1+"px");
-                } else {
-                    $(span).css("margin-left", (keyWidth * key.offset)+"px");
-                }
-                if (typeof(key.value) == 'undefined') {
-                    $(span).attr("data-value", key.name);
-                } else {
-                    $(span).attr("data-value", key.value);
-                }
-                
-                if ($(span).height() > keyWidth) {
-                    $(span).attr("data-height", $(span).height());
-                    $(span).attr("data-key", key.code);
-                    $(span).height(keyWidth-2);
-                    $(span).addClass("keymap-key");
-                } else if (key.type == "space") {
-                    //Insert space
-                } else if (key.type == "break") {
-                    //Insert new line
+
+            layout = options.layout;
+
+            $(_this).addClass("keymap");
+            
+            var keyWidth = _this.width() / options.layout.line;
+            var keys = options.layout.keys;
+            var key, width, height, offset, span, p, value, div;
+            for (var i = 0; i < keys.length; i++) {
+                div = document.createElement("div");
+                $(div).addClass("keymap-line");
+
+                for (var j = 0; j < keys[i].length; j++) {
+                    key = keys[i][j];
                     span = document.createElement("span");
-                    _this.append(div);
-                    div = document.createElement("div");
-                    $(div).addClass("line");
-                } else {
-                    //Insert key
-                    $(span).addClass("keymap-key");
-                    $(span).attr("data-key", key.code);
+                    
+                    //Width
+                    width = ((keyWidth * (key.width || 1)) - 2) + "px";
+                    $(span).width(width);
+                    //Height
+                    height = ((keyWidth * key.height) || (keyWidth - 2)) + "px";
+                    $(span).height(height);
+
+                    //Offset
+                    offset = ((keyWidth * key.offset) || 1 ) + "px";
+                    $(span).css('margin-left', offset);
+                    
+                    //Value        
+                    value = (key.value || key.name);
+                    $(span).attr('data-value', value);
+
+                    //Other
+                    if ($(span).height() > keyWidth) {
+                        $(span).attr("data-height", $(span).height() - 2);
+                        $(span).height(keyWidth);
+                    }
+
+                    if (typeof(key.code) != 'undefined') {
+                        //Insert key
+                        $(span).addClass("keymap-key");
+                        $(span).attr("data-key", key.code);
+                    }
+                    
+                    if (typeof(key.second) != 'undefined') {
+                        p = createElement(key.second);
+                        $(p).addClass("second");
+                        span.appendChild(p);
+                        $(span).addClass("hasSecond");
+                    }
+
+                    if (typeof(key.name) != 'undefined') {
+                        //Insert Text
+                        p = createElement(key.name);
+                        $(p).addClass("first");
+                        span.appendChild(p);
+                        $(span).addClass("hasFirst");
+                    }
+                    
+                    if (typeof(key.third) != 'undefined') {
+                        p = createElement(key.third);
+                        $(p).addClass("third");
+                        span.appendChild(p);
+                        $(span).addClass("hasThird");
+                    }
+
+                    if (typeof(key['z-index']) != 'undefined') {
+                        //Add index class
+                        $(span).attr("data-index", key['z-index']);
+                    }
+                    div.appendChild(span);
                 }
-                
-                if (typeof(key.name) != 'undefined') {
-                    //Insert Text
-                    p = document.createElement("p");
-                    $(p).text(key.name);
-                    span.appendChild(p);
-                }
-                
-                if (typeof(key['z-index']) != 'undefined') {
-                    //Add index class
-                    $(span).attr("data-index", key['z-index']);
-                }
-                div.appendChild(span);
+
+                _this.append(div);
             }
-            _this.append(div);
+
+
             //Color keyboard
-            _this.styleKeymap(opt.css);
-            $(_this.selector+' span').css("display", "block");
-            $(_this.selector+' .line').css("display", "flex");
-            $(_this.selector+' p').attr("align", "center");
-            $(_this.selector+' span').css("margin-right", "1px");
-            $(_this.selector+' span').css("margin-bottom", "1px");
-            $(_this.selector+' span').css("margin-top", "1px");
+            style(options.css);
             //Set font size
-            var scale = _this.width() / 1440 * 100;
-            _this.css("font-size", scale+"%");
+            $(_this.selector + ' span p').css("font-size", keyWidth / 4 + "px");
             //Special keys
             $(_this.selector+' span[data-height]').each(function(){
-                $(this).css("position", "absolute");
-                $(this).css("z-index", 2);
-                $(this).height($(this).attr("data-height")-2);
-            });
-            //Overlay keys
-            $(_this.selector+' span[data-index]').each(function(){
-                $(this).css("position", "absolute");
-                $(this).css("z-index", 3);
+                $(this).height($(this).attr("data-height"));
             });
             //Save selector and style
-            keyMap.selector = this.selector;
-            keyMap.css      = opt.css;
-        })
-        .fail(function(e){
-            $(_this).html('<p class="keymap-error">Failed to load layout! Check <a href="https://github.com/Andr3as/jQuery-Keymap/wiki/Troubleshooting">error #1</a> for more details.</p>');
-        });
+            keyMap.selector = _this.selector;
+            keyMap.css      = options.css;
+        };
+        
+        style = function(css) {
+            css = css || options.css;
+            //Style keyboard
+            if (typeof(css) != 'undefined') {
+                if (typeof(css.key) != 'undefined') {
+                    if (typeof(css.key.color) != 'undefined') {
+                        $(_this.selector+' .keymap-key').css("color", css.key.color);
+                    } else {
+                        $(_this.selector+' .keymap-key').css("color", "");
+                    }
+                    if (typeof(css.key.background) != 'undefined') {
+                        $(_this.selector+' .keymap-key').css("background-color", css.key.background);
+                    } else {
+                        $(_this.selector+' .keymap-key').css("background-color", "");
+                    }
+                    if (typeof(css.key.class) != 'undefined') {
+                        $(_this.selector+' .keymap-key').addClass(css.key.class);
+                    }
+                }
+            }
+        };
+
+        this.keymap.style = style;
+        
+        if (options.action == 'reset') {
+            style();
+        } else if (options == 'delete') {
+            this.html("");
+        } else {
+            create();
+        }
         return this;
     };
     
-    //////////////////////////////////////////////////////////
-    //
-    //  Returns the selector of the last keymap
-    //
-    //  Result
-    //
-    //  obj - {String} - Selector of the last keymap
-    //
-    //////////////////////////////////////////////////////////
-    $.fn.getKeymap = function() {
-        return keyMap.selector;
-    };
-    
-    
-    /* selector : Selector of the keymap, keys: Array of key to link together or just one key f.e. [88,89,90],
-        css: {background-color or class to add}
-        special: Special selector, f.e. :last or :first
-        element function called by: element wich to click or hover to show shortcut */
     //////////////////////////////////////////////////////////
     //
     //  Create a shortcut
@@ -267,6 +224,18 @@ var scripts = document.getElementsByTagName('script'),
     //  obj - {Object} - Dom object
     //
     //////////////////////////////////////////////////////////
+    
+    /**
+     * @name $().createShortcut
+     * @this {HTML element} - HTML element to control hightlighting by hovering over it
+     * @param {string} selector - Selector of the alread created keymap
+     * @param {Object[]} keys - Array of keys to be highlighted
+     * @param {Object{}} [css] - Style you want apply highlighted keys
+     * @param {string} [css.class] - Either a class to apply highlighted keys
+     * @param {string} [css.color] - Or a color to apply
+     * @param {string} [css.background] - AND background color to apply
+     * @param {string} [special] - jQuery selector to select one out of several, f.e. :first, :last
+     */
     $.fn.createShortcut = function(selector, keys, css, special) {
         var _this = this;
         var setClass;
@@ -303,23 +272,35 @@ var scripts = document.getElementsByTagName('script'),
                 $(selector+" .keymap-key").css("color", "");
                 $(selector+" .keymap-key").css("background-color", "");
             } else {
-                $(selector).styleKeymap(keyMap.css);
+                $(selector).keymap.style(keyMap.css);
             }
         };
         var fn = function(){
             reset();
+            var values;
+            String.prototype.capitalizeFirstLetter = function() {
+                return this.charAt(0).toUpperCase() + this.slice(1);
+            };
+
             if ($.isArray(keys)) {
                 for (var i = 0; i < keys.length; i++) {
                     if ($.isNumeric(keys[i])) {
                         style(selector+' [data-key='+keys[i]+']'+special);
                     } else {
-                        style(selector+' [data-value='+keys[i]+']'+special);
+                        //Check for uppercase, lowercase, First uppercase other lowercase and original value
+                        values = [keys[i], keys[i].toLowerCase(), keys[i].toUpperCase(), keys[i].capitalizeFirstLetter()];
+                        $.each(values, function(j, item){
+                            style(selector+' [data-value='+item+']'+special);
+                        });
                     }
                 }
             } else if ($.isNumeric(keys)) {
                 style(selector+' [data-key='+keys+']'+special);
             } else {
-                style(selector+' [data-value='+keys+']'+special);
+                values = [keys, keys.toLowerCase(), keys.toUpperCase(), , keys.capitalizeFirstLetter()];
+                $.each(values, function(i, item){
+                    style(selector+' [data-value='+item+']'+special);
+                });
             }
         };
         

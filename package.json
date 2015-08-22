@@ -1,0 +1,21 @@
+{
+  "name": "jQuery-Keymap",
+  "version": "2.0.0",
+  "description": "Create with jQuery a keymap to display keybindings.",
+  "main": "keymap.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Andr3as/jQuery-Keymap.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "ui",
+    "animation"
+  ],
+  "author": "Andr3as",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andr3as/jQuery-Keymap/issues"
+  }
+}

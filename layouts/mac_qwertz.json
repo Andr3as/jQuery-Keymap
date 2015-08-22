@@ -1,7 +1,7 @@
 {
     "line": 22.5,
     "keys": [
-        {
+        [{
             "code": 27,
             "name": "Esc"
         },
@@ -68,7 +68,7 @@
         {
             "code": -1,
             "name": "Eject",
-            "width": 1.04
+            "width": 1.03
         },
         {
             "type": "space",
@@ -105,61 +105,71 @@
         {
             "code": -1,
             "name": "F19"
-        },
-        {
-            "type": "break"
-        },
-        {
+        }],
+        [{
             "code": 160,
-            "name": "^"
+            "name": "^",
+            "second": "°"
         },
         {
             "code": 49,
-            "name": "1"
+            "name": "1",
+            "second": "!"
         },
         {
             "code": 50,
-            "name": "2"
+            "name": "2",
+            "second": "\""
         },
         {
             "code": 51,
-            "name": "3"
+            "name": "3",
+            "second": "§"
         },
         {
             "code": 52,
-            "name": "4"
+            "name": "4",
+            "second": "$"
         },
         {
             "code": 53,
-            "name": "5"
+            "name": "5",
+            "second": "%"
         },
         {
             "code": 54,
-            "name": "6"
+            "name": "6",
+            "second": "&"
         },
         {
             "code": 55,
-            "name": "7"
+            "name": "7",
+            "second": "/"
         },
         {
             "code": 56,
-            "name": "8"
+            "name": "8",
+            "second": "("
         },
         {
             "code": 57,
-            "name": "9"
+            "name": "9",
+            "second": ")"
         },
         {
             "code": 48,
-            "name": "0"
+            "name": "0",
+            "second": "="
         },
         {
             "code": 63,
-            "name": "ß"
+            "name": "ß",
+            "second": "?"
         },
         {
             "code": 192,
-            "name": "´"
+            "name": "´",
+            "second": "`"
         },
         {
             "code": 8,
@@ -201,62 +211,60 @@
         {
             "code": 106,
             "name": "*"
-        },
-        {
-            "type": "break"
-        },
-        {
+        }],
+        [{
             "code": 9,
             "name": "Tabulator",
             "width": 1.5
         },
         {
             "code": 81,
-            "name": "q"
+            "name": "Q"
         },
         {
             "code": 87,
-            "name": "w"
+            "name": "W"
         },
         {
             "code": 69,
-            "name": "e"
+            "name": "E"
         },
         {
             "code": 82,
-            "name": "r"
+            "name": "R"
         },
         {
             "code": 84,
-            "name": "t"
+            "name": "T"
         },
         {
             "code": 90,
-            "name": "z"
+            "name": "Z"
         },
         {
             "code": 85,
-            "name": "u"
+            "name": "U"
         },
         {
             "code": 73,
-            "name": "i"
+            "name": "I"
         },
         {
             "code": 79,
-            "name": "o"
+            "name": "O"
         },
         {
             "code": 80,
-            "name": "p"
+            "name": "P"
         },
         {
             "code": 0,
-            "name": "ü"
+            "name": "Ü"
         },
         {
             "code": 171,
-            "name": "+"
+            "name": "+",
+            "second": "*"
         },
         {
             "code": 13,
@@ -268,12 +276,12 @@
             "code": 13,
             "value": "Enter",
             "height": 2,
-            "width": 0.5,
+            "width": 0.51,
             "offset": 0.5
         },
         {
             "type": "space",
-            "width": 0.5,
+            "width": 0.52,
             "offset": 1
         },
         {
@@ -307,62 +315,61 @@
         {
             "code": 109,
             "name": "-"
-        },
-        {
-            "type": "break"
-        },
-        {
+        }],
+        [{
             "code": 20,
             "name": "Feststelltaste",
             "width": 2
         },
         {
             "code": 65,
-            "name": "a"
+            "name": "A"
         },
         {
             "code": 83,
-            "name": "s"
+            "name": "S"
         },
         {
             "code": 68,
-            "name": "d"
+            "name": "D"
         },
         {
             "code": 70,
-            "name": "f"
+            "name": "F"
         },
         {
             "code": 71,
-            "name": "g"
+            "name": "G"
         },
         {
             "code": 72,
-            "name": "h"
+            "name": "H"
         },
         {
             "code": 74,
-            "name": "j"
+            "name": "J"
         },
         {
             "code": 75,
-            "name": "k"
+            "name": "K"
         },
         {
             "code": 76,
-            "name": "l"
+            "name": "L",
+            "third": "@"
         },
         {
             "code": 0,
-            "name": "ö"
+            "name": "Ö"
         },
         {
             "code": 0,
-            "name": "ä"
+            "name": "Ä"
         },
         {
             "code": 163,
-            "name": "#"
+            "name": "#",
+            "second": "'"
         },
         {
             "code": 13,
@@ -388,54 +395,55 @@
         {
             "code": 107,
             "name": "+"
-        },
-        {
-            "type": "break"
-        },
-        {
+        }],
+        [{
             "code": 16,
             "name": "Shift",
             "width": 2.5
         },
         {
             "code": 89,
-            "name": "y"
+            "name": "Y"
         },
         {
             "code": 88,
-            "name": "x"
+            "name": "X"
         },
         {
             "code": 67,
-            "name": "c"
+            "name": "C"
         },
         {
             "code": 86,
-            "name": "v"
+            "name": "V"
         },
         {
             "code": 66,
-            "name": "b"
+            "name": "B"
         },
         {
             "code": 78,
-            "name": "n"
+            "name": "N"
         },
         {
             "code": 77,
-            "name": "m"
+            "name": "M",
+            "third": "µ"
         },
         {
             "code": 188,
-            "name": ","
+            "name": ",",
+            "second": ";"
         },
         {
             "code": 190,
-            "name": "."
+            "name": ".",
+            "second": ":"
         },
         {
             "code": 173,
-            "name": "-"
+            "name": "-",
+            "second": "_"
         },
         {
             "code": 16,
@@ -470,11 +478,8 @@
             "code": 13,
             "name": "enter",
             "height": 2
-        },
-        {
-            "type": "break"
-        },
-        {
+        }],
+        [{
             "code": 17,
             "name": "ctrl",
             "width": 1.5
@@ -537,6 +542,6 @@
         {
             "code": 110,
             "name": ","
-        }
+        }]
     ]
 }

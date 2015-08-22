@@ -1,0 +1,62 @@
+/**
+ *  @author Andr3as <andranode@gmail.com>
+ *  @license https://github.com/Andr3as/jQuery-Keymap/blob/master/LICENSE.md MIT
+ *  @version 2.0.0
+ *  @date 15/08/2015
+ */
+
+/*
+ * Copyright (c) Andr3as
+ * as-is and without warranty under the MIT License.
+ * See http://opensource.org/licenses/MIT for more information. 
+ * This information must remain intact.
+ */
+.keymap span {
+    display: block;
+    margin: 1px 1px 1px 0;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.keymap .keymap-line {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.keymap p {
+    text-align: center;
+}
+
+.keymap span[data-height] {
+    position: absolute;
+    z-index: 2;
+}
+
+.keymap span[data-index] {
+    position: absolute;
+    z-index: 3;
+}
+
+.keymap .first, .keymap .second {
+    margin: 0.5em;
+}
+
+.keymap .hasFirst .second, .keymap .hasSecond .first {
+    margin: 0.2em;
+}
+
+.keymap .hasSecond .third {
+    bottom: 1.5em;
+    position: relative;
+    z-index: 3;
+    right: -1em;
+}
+
+.keymap span:not(.hasSecond) .third {
+    bottom: 1em;
+    position: relative;
+    right: -1em;
+}

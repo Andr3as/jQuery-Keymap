@@ -1,65 +1,74 @@
 {
-    "line": 23,
+    "line": 14.5,
     "keys": [
         [{
             "code": 27,
-            "name": "Esc"
-        }, {
-            "type": "space"
-        }, {
+            "name": "Esc",
+            "width": 1.2
+        },
+        {
             "code": 112,
-            "name": "F1"
-        }, {
+            "name": "F1",
+            "width": 1.2
+        },
+        {
             "code": 113,
-            "name": "F2"
-        }, {
+            "name": "F2",
+            "width": 1.2
+        },
+        {
             "code": 114,
-            "name": "F3"
-        }, {
+            "name": "F3",
+            "width": 1.2
+        },
+        {
             "code": 115,
-            "name": "F4"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
+            "name": "F4",
+            "width": 1.2
+        },
+        {
             "code": 116,
-            "name": "F5"
-        }, {
+            "name": "F5",
+            "width": 1.2
+        },
+        {
             "code": 117,
-            "name": "F6"
-        }, {
+            "name": "F6",
+            "width": 1.2
+        },
+        {
             "code": 118,
-            "name": "F7"
-        }, {
+            "name": "F7",
+            "width": 1.2
+        },
+        {
             "code": 119,
-            "name": "F8"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
+            "name": "F8",
+            "width": 1.2
+        },
+        {
             "code": 120,
-            "name": "F9"
-        }, {
+            "name": "F9",
+            "width": 1.2
+        },
+        {
             "code": 121,
-            "name": "F10"
-        }, {
+            "name": "F10",
+            "width": 1.2
+        },
+        {
             "code": 122,
-            "name": "F11"
-        }, {
+            "name": "F11",
+            "width": 1.2
+        },
+        {
             "code": 123,
-            "name": "F12"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
+            "name": "F12",
+            "width": 1.2
+        },{
             "code": -1,
-            "name": "Druck"
-        }, {
-            "code": 145,
-            "name": "Rollen"
-        }, {
-            "code": 19,
-            "name": "Pause"
+            "name": "Power",
+            "width": 1.2
         }],
         [{
             "code": 160,
@@ -84,36 +93,36 @@
         }, {
             "code": 53,
             "name": "5",
-            "second": "%"
+            "second": "%",
+            "third": "["
         }, {
             "code": 54,
             "name": "6",
-            "second": "&"
+            "second": "&",
+            "third": "]"
         }, {
             "code": 55,
             "name": "7",
             "second": "/",
-            "third": "{"
+            "third": "|"
         }, {
             "code": 56,
             "name": "8",
             "second": "(",
-            "third": "["
+            "third": "{"
         }, {
             "code": 57,
             "name": "9",
             "second": ")",
-            "third": "]"
+            "third": "}"
         }, {
             "code": 48,
             "name": "0",
-            "second": "=",
-            "third": "}"
+            "second": "="
         }, {
             "code": 63,
             "name": "ß",
-            "second": "?",
-            "third": "\\"
+            "second": "?"
         }, {
             "code": 192,
             "name": "´",
@@ -121,34 +130,7 @@
         }, {
             "code": 8,
             "name": "Backspace",
-            "width": 2
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
-            "code": 45,
-            "name": "Einfg"
-        }, {
-            "code": 36,
-            "name": "Pos1"
-        }, {
-            "code": 33,
-            "name": "Bild Auf"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
-            "code": 144,
-            "name": "Num."
-        }, {
-            "code": 111,
-            "name": "/"
-        }, {
-            "code": 106,
-            "name": "*"
-        }, {
-            "code": 109,
-            "name": "-"
+            "width": 1.5
         }],
         [{
             "code": 9,
@@ -156,8 +138,7 @@
             "width": 1.5
         }, {
             "code": 81,
-            "name": "Q",
-            "third": "@"
+            "name": "Q"
         }, {
             "code": 87,
             "name": "W"
@@ -192,50 +173,22 @@
         }, {
             "code": 171,
             "name": "+",
-            "second": "*",
-            "third": "~"
+            "second": "*"
         }, {
             "code": 13,
             "name": "Enter",
             "height": 2,
-            "offset": 0.52
+            "offset": 0.56,
+            "width": 0.9
         }, {
             "code": 13,
             "value": "Enter",
             "width": 1.5
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
-            "code": 46,
-            "name": "Entf"
-        }, {
-            "code": 35,
-            "name": "Ende"
-        }, {
-            "code": 34,
-            "name": "Bild Ab"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
-            "code": 103,
-            "name": "7"
-        }, {
-            "code": 104,
-            "name": "8"
-        }, {
-            "code": 105,
-            "name": "9"
-        }, {
-            "code": 107,
-            "name": "+",
-            "height": 2
         }],
         [{
             "code": 20,
             "name": "Festselltaste",
-            "width": 2
+            "width": 1.6
         }, {
             "code": 65,
             "name": "A"
@@ -262,7 +215,8 @@
             "name": "K"
         }, {
             "code": 76,
-            "name": "L"
+            "name": "L",
+            "third": "@"
         }, {
             "code": 0,
             "name": "Ö"
@@ -273,28 +227,15 @@
             "code": 163,
             "name": "#",
             "second": "'"
-        }, {
-            "type": "space",
-            "width": 5
-        }, {
-            "code": 100,
-            "name": "4"
-        }, {
-            "code": 101,
-            "name": "5"
-        }, {
-            "code": 102,
-            "name": "6"
         }],
         [{
             "code": 16,
             "name": "Shift",
-            "width": 1.5
+            "width": 1.2
         }, {
             "code": 60,
             "name": "<",
-            "second": ">",
-            "third": "|"
+            "second": ">"
         }, {
             "code": 89,
             "name": "Y"
@@ -333,78 +274,74 @@
             "code": 16,
             "name": "Shift",
             "width": 2.5
-        }, {
-            "type": "space",
-            "width": 1.5
-        }, {
-            "code": 38,
-            "name": "Hoch"
-        }, {
-            "type": "space",
-            "width": 1.5
-        }, {
-            "code": 97,
-            "name": "1"
-        }, {
-            "code": 98,
-            "name": "2"
-        }, {
-            "code": 99,
-            "name": "3"
-        }, {
-            "code": 13,
-            "name": "Enter",
-            "height": 2
         }],
         [{
+            "code": -1,
+            "name": "fn",
+            "z-index": "2"
+        },
+        {
             "code": 17,
-            "name": "Strg",
-            "width": 1.5
-        }, {
-            "code": 91,
-            "name": "Win"
-        }, {
+            "name": "Ctrl",
+            "offset": 1,
+            "z-index": "2"
+        },
+        {
             "code": 18,
-            "name": "Alt"
-        }, {
-            "code": 32,
+            "name": "Alt",
+            "offset": 2,
+            "z-index": "2"
+        },
+        {
+            "code": 55,
+            "name": "Cmd",
+            "width": 1.2,
+            "offset": 3,
+            "z-index": "2"
+        },
+        {
+            "code": 31,
             "name": "Space",
-            "width": 7
-        }, {
+            "offset": 4.2,
+            "width": 5,
+            "z-index": "2"
+        },
+        {
+            "code": 55,
+            "name": "Cmd",
+            "offset": 9.2,
+            "width": 1.2,
+            "z-index": "2"
+        },
+        {
             "code": 18,
-            "name": "Alt Gr"
-        }, {
-            "code": 91,
-            "name": "Win"
-        }, {
-            "code": 93,
-            "name": "Menü"
-        }, {
-            "code": 17,
-            "name": "Strg",
-            "width": 1.5
-        }, {
+            "name": "Alt",
+            "offset": 10.4,
+            "z-index": "2"
+        },{
+            "code": 38,
+            "name": "Hoch",
+            "height": 0.45,
+            "offset": 12.4,
+            "z-index": "2"
+        }],
+        [{
             "type": "space",
-            "width": 0.5
-        }, {
+            "height": 0.45
+        }],
+        [{
             "code": 37,
-            "name": "Links"
-        }, {
+            "name": "Links",
+            "offset": 11.4,
+            "height": 0.5
+        },{
             "code": 40,
-            "name": "Runter"
-        }, {
+            "name": "Runter",
+            "height": 0.5
+        },{
             "code": 39,
-            "name": "Rechts"
-        }, {
-            "type": "space",
-            "width": 0.5
-        }, {
-            "code": 96,
-            "name": "0",
-            "width": 2
-        }, {
-            "code": 110,
-            "name": ","
+            "name": "Rechts",
+            "height": 0.5
         }]
     ]
 }
