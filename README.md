@@ -2,6 +2,10 @@
 
 Create your own keymap to display the keybinings of your software with jQuery.
 
+##Version **2.0.0**
+
+Introducing second and third levels of keyboards to keymap. Allows to display additional information such as {, } or @.
+
 ##Installation/Quickstart
 
 - Download the zip file and unzip it.
